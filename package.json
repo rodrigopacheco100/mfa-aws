@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prepare": "npm run build",
-    "build": "npx swc ./src -d dist",
+    "build": "tsc",
     "start": "ts-node src/index.ts"
   },
   "keywords": [],
@@ -20,8 +20,6 @@
     "commander": "^9.1.0"
   },
   "devDependencies": {
-    "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.159",
     "@types/node": "^17.0.21",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
