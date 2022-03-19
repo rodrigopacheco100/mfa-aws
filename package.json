@@ -1,0 +1,34 @@
+{
+  "name": "aws-mfa-setup",
+  "version": "1.0.0",
+  "description": "AWS MFA configuration manager",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rodrigopacheco100/aws-mfa-setup.git"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "npx swc ./src -d dist",
+    "start": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "Rodrigo Pacheco <https://github.com/rodrigopacheco100>",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.1.0"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.159",
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  }
+}
