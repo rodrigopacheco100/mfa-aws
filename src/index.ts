@@ -5,6 +5,7 @@ import { exec } from 'child_process';
 
 import { SessionToken } from './types/SessionToken';
 
+import { version } from '../package.json';
 import { unsetOldConfig } from './tools/unsetOldConfig';
 import { setNewConfig } from './tools/setNewConfig';
 
@@ -13,7 +14,7 @@ const program = new Command();
 program
   .name('mfa-aws')
   .description('AWS MFA configuration manager')
-  .version('1.0.0')
+  .version(version)
   .requiredOption('--secret <secret>', 'your mfa secret')
   .requiredOption('--arn <arn>', 'your arn')
   .parse(process.argv);
