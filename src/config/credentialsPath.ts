@@ -1,5 +1,4 @@
 import path from 'path';
+import { homedir } from 'os';
 
-const homedir = require('os').homedir();
-
-export const credentialsPath = path.join(homedir, '.aws', 'credentials');
+export const credentialsPath = path.join(homedir(), '.aws', 'credentials');
