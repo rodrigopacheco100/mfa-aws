@@ -1,15 +1,15 @@
-import { exec } from 'child_process';
+import { execute } from './execute';
 
-export const unsetOldConfig = () => {
+export const unsetOldConfig = async () => {
   switch (process.platform) {
     case 'win32':
-      exec('set AWS_ACCESS_KEY_ID=');
-      exec('set AWS_SECRET_ACCESS_KEY=');
-      exec('set AWS_SESSION_TOKEN=');
+      await execute('set AWS_ACCESS_KEY_ID=');
+      await execute('set AWS_SECRET_ACCESS_KEY=');
+      await execute('set AWS_SESSION_TOKEN=');
       break;
     default:
-      exec('unset AWS_ACCESS_KEY_ID');
-      exec('unset AWS_SECRET_ACCESS_KEY');
-      exec('unset AWS_SESSION_TOKEN');
+      await execute('unset AWS_ACCESS_KEY_ID');
+      await execute('unset AWS_SECRET_ACCESS_KEY');
+      await execute('unset AWS_SESSION_TOKEN');
   }
 };
