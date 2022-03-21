@@ -1,15 +1,14 @@
-import { execute } from './execute';
+import { readFile, writeFile } from 'fs';
+import { promisify } from 'util';
+import { credentialsPath } from '../config/credentialsPath';
 
 export const unsetOldConfig = async () => {
-  switch (process.platform) {
-    case 'win32':
-      await execute('set AWS_ACCESS_KEY_ID=');
-      await execute('set AWS_SECRET_ACCESS_KEY=');
-      await execute('set AWS_SESSION_TOKEN=');
-      break;
-    default:
-      await execute('unset AWS_ACCESS_KEY_ID');
-      await execute('unset AWS_SECRET_ACCESS_KEY');
-      await execute('unset AWS_SESSION_TOKEN');
-  }
+  readFile(credentialsPath, async (err, data) => {
+    const credentialsWithoutSession = data.toString().split('\n').filter((_, index) => index < 3).reduce((acc, line) => `${acc + line}\n`, '');
+
+    await promisify(writeFile)(
+      credentialsPath,
+      credentialsWithoutSession,
+    );
+  });
 };

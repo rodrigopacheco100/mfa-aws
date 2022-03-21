@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
+import { promisify } from 'util';
+import { exec } from 'child_process';
 
 import { SessionToken } from './types/SessionToken';
 
 import { version } from '../package.json';
 import { unsetOldConfig } from './tools/unsetOldConfig';
 import { setNewConfig } from './tools/setNewConfig';
-import { execute } from './tools/execute';
 
 const program = new Command();
 
@@ -24,7 +25,7 @@ const options = program.opts();
 const run = async () => {
   await unsetOldConfig();
 
-  const { stdout, stderr } = await execute(`aws sts get-session-token --duration-seconds 28800 --serial-number ${options.arn} --token-code ${options.secret}`);
+  const { stdout, stderr } = await promisify(exec)(`aws sts get-session-token --duration-seconds 28800 --serial-number ${options.arn} --token-code ${options.secret}`);
 
   if (stderr) {
     console.log(`stderr: ${stderr}`);
@@ -32,8 +33,6 @@ const run = async () => {
   }
 
   const sessionToken: SessionToken = JSON.parse(stdout);
-
-  console.log(sessionToken);
 
   await setNewConfig(sessionToken);
 };
