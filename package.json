@@ -1,6 +1,6 @@
 {
   "name": "mfa-aws",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "AWS MFA configuration manager",
   "main": "dist/index.js",
   "bin": "dist/index.js",
@@ -17,7 +17,7 @@
   "author": "Rodrigo Pacheco <https://github.com/rodrigopacheco100>",
   "license": "ISC",
   "dependencies": {
-    "commander": "^9.1.0"
+    "commander": "^8.3.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
