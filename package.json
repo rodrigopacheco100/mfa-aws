@@ -1,9 +1,9 @@
 {
   "name": "mfa-aws",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "AWS MFA configuration manager",
-  "main": "dist/index.js",
-  "bin": "dist/index.js",
+  "main": "dist/src/index.js",
+  "bin": "dist/src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/rodrigopacheco100/mfa-aws.git"
